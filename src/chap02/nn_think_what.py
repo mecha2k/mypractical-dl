@@ -1,5 +1,5 @@
-from code.utils.kerasutils import init_gpus
-from code.chap02.visualization import process_image
+from src.utils.kerasutils import init_gpus
+from src.chap02.visualization import process_image
 
 import os
 

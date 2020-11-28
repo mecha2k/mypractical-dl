@@ -14,9 +14,16 @@ from argparse import ArgumentParser
 
 
 CLASS_INDEX = None
-CLASS_INDEX_PATH = "../imagenet_class_index.json"
+CLASS_INDEX_PATH = "imagenet_class_index.json"
 
-model = VGG16(weights="imagenet", include_top=True, input_tensor=None, input_shape=None, pooling=None, classes=1000)
+model = VGG16(
+    weights="imagenet",
+    include_top=True,
+    input_tensor=None,
+    input_shape=None,
+    pooling=None,
+    classes=1000,
+)
 
 # Note: decode_predictions(preds, top) is originally a keras function.
 # We have modified it here so that it returns the index of the class label along with the predictions.
@@ -69,7 +76,9 @@ def overlay_prediction_on_image(img, prediction_class, prediction_probability, w
     l = len(prediction_class)
     # Place a black rectangle to provide a background for the text
     # The size of the rectangle should change with respect to the image
-    draw.rectangle([int(width * 0.05), int(width * 0.05), int(width * 0.5), int(width * 0.11)], fill=(0, 0, 0))
+    draw.rectangle(
+        [int(width * 0.05), int(width * 0.05), int(width * 0.5), int(width * 0.11)], fill=(0, 0, 0)
+    )
     draw.text(
         (int(width * 0.06), int(width * 0.06)),
         "{0:.0f}".format(prediction_probability) + "% " + prediction_class,
@@ -135,7 +144,9 @@ if __name__ == "__main__":
         dest="process_type",
         help="Process a single image or video",
     )
-    parser.add_argument("--path", required=True, dest="path", help="Path of image or directory containing videos")
+    parser.add_argument(
+        "--path", required=True, dest="path", help="Path of image or directory containing videos"
+    )
     args = parser.parse_args()
 
     if args.process_type == "image":

@@ -4,7 +4,7 @@ from keras.preprocessing import image
 import numpy as np
 import matplotlib.pyplot as plt
 
-from code.utils.kerasutils import init_gpus
+from src.utils.kerasutils import init_gpus
 
 init_gpus()
 
